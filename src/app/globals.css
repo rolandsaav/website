@@ -2,32 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.wrapper {
+  max-width: 65rem;
+  margin: auto;
+  display: flex;
+  padding: 5rem 2rem;
+  gap: 3rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@media (max-width: 44rem) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .left {
+    width: 100%;
+    min-width: unset;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.left {
+  max-width: 22rem;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.right {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.navlink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding-left: 0.5rem;
+}
+
+.navlink-off:hover::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  border-left: solid grey 0.5px;
+  height: 100%;
+  z-index: -20;
+}
+
+.navlink-active::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  border-left: solid black 1px;
+  height: 100%;
+  z-index: 20;
+}
+
+.article-link {
+  width: 100%;
+}
+
+.article:hover {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.details {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.article-wrapper {
+  max-width: 45rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+.article-topper {
+  border-bottom: solid black 1px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  padding-bottom: 5px;
+}
+
+.article-content {
+  width: 100%;
 }
