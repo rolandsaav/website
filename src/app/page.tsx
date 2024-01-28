@@ -3,6 +3,11 @@ import Link from "next/link";
 import { cache } from "react";
 import { db } from "./firebase";
 import { Article } from "@/types/Article";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Roland Saavedra",
+};
 
 async function getData() {
 	const res = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -53,10 +58,10 @@ export default async function Home() {
 					<Link href="/" className="navlink navlink-active">
 						Articles
 					</Link>
-					<Link href="/" className="navlink navlink-off">
+					<Link href="/background" className="navlink navlink-off">
 						Background
 					</Link>
-					<Link href="/" className="navlink navlink-off">
+					<Link href="/projects" className="navlink navlink-off">
 						Projects
 					</Link>
 					<Link href="/" className="navlink navlink-off">

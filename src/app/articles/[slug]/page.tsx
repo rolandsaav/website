@@ -4,6 +4,19 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import Head from "next/head";
 import Link from "next/link";
 import { cache } from "react";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug: string };
+}) {
+	const article = await getArticle(params.slug);
+
+	return {
+		title: article.title,
+	};
+}
 
 export const dynamicParams = false;
 
@@ -29,6 +42,7 @@ const getArticle = cache(async (slug: string) => {
 export default async function Page({ params }: { params: { slug: string } }) {
 	const article = await getArticle(params.slug);
 	const localDate = new Date(article.date.seconds * 1000).toLocaleDateString();
+
 	return (
 		<>
 			<Head>
