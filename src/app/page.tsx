@@ -80,22 +80,32 @@ export default async function Home() {
 				</div>
 			</div>
 			<div className="right">
-				{articles.map((post) => {
-					const localDate = new Date(
-						post.date.seconds * 1000,
-					).toLocaleDateString();
-					return (
-						<Link
-							key={post.id}
-							href={`/articles/${post.slug}`}
-							className="article-link"
-						>
-							<div className="details">{localDate}</div>
-							<div className="title text-zinc-800">{post.title}</div>
-							<div className="description">{post.description}</div>
-						</Link>
-					);
-				})}
+				{articles
+					.sort((a, b) => {
+						if (a.time > b.time) {
+							return 1;
+						} else if (a.time < b.time) {
+							return -1;
+						} else {
+							return 0;
+						}
+					})
+					.map((post) => {
+						const localDate = new Date(
+							post.date.seconds * 1000,
+						).toLocaleDateString();
+						return (
+							<Link
+								key={post.id}
+								href={`/articles/${post.slug}`}
+								className="article-link"
+							>
+								<div className="details">{localDate}</div>
+								<div className="title text-zinc-800">{post.title}</div>
+								<div className="description">{post.description}</div>
+							</Link>
+						);
+					})}
 			</div>
 		</div>
 	);
