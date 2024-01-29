@@ -50,9 +50,19 @@ export default async function Home() {
 					entrepreneurship, language, mathematics, finance, and design.
 				</div>
 				<div className="links text-zinc-500 pt-6">
-					<a href="https://www.github.com/rolandsaav">Github</a>
-					<a href="https://www.linkedin.com/in/rsaav">Linkedin</a>
-					<a href="">Resume</a>
+					<a target="_blank" href="https://www.github.com/rolandsaav">
+						Github
+					</a>
+					<a target="_blank" href="https://www.linkedin.com/in/rsaav">
+						Linkedin
+					</a>
+					<a
+						href="SaavedraResume2024.pdf"
+						download="RolandSaavedra"
+						target="_blank"
+					>
+						Resume
+					</a>
 				</div>
 				<div className="navigation text-zink-700 font-semibold pt-8">
 					<Link href="/" className="navlink navlink-active">
