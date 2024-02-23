@@ -4,6 +4,7 @@ import { cache } from "react";
 import { db } from "./firebase";
 import { Article } from "@/types/Article";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
 	title: "Roland Saavedra",
@@ -43,7 +44,10 @@ export default async function Home() {
 	const articles = await getArticles();
 	return (
 		<div className="wrapper">
-			<div className="left pt-24">
+			<div className="left">
+				<div className="relative overflow-hidden rounded-full mb-4 border h-24 w-24 aspect-square">
+					<Image alt="Profile Picture" fill src={"/violinpic.jpg"} />
+				</div>
 				<div className="name font-bold text-lg">Roland Saavedra</div>
 				<div className="description text-zinc-700 pt-2">
 					Computer Science undergrad at Georgia Tech. Interested in
@@ -82,10 +86,10 @@ export default async function Home() {
 			<div className="right">
 				{articles
 					.sort((a, b) => {
-						if (a.time > b.time) {
-							return 1;
-						} else if (a.time < b.time) {
+						if (a.date.seconds > b.date.seconds) {
 							return -1;
+						} else if (a.date.seconds < b.date.seconds) {
+							return 1;
 						} else {
 							return 0;
 						}

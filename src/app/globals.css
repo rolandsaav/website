@@ -33,7 +33,12 @@
 
 .links {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .navigation {
