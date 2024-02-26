@@ -4,7 +4,6 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import Head from "next/head";
 import Link from "next/link";
 import { cache } from "react";
-import { Metadata } from "next";
 
 export async function generateMetadata({
 	params,
@@ -31,6 +30,8 @@ export async function generateStaticParams() {
 	}));
 	return result;
 }
+
+export const revalidate = 3600;
 
 const getArticle = cache(async (slug: string) => {
 	const articlesRef = collection(db, "articles");
